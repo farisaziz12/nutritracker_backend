@@ -4,6 +4,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   def token
-    JWT.encode({user_id: self.id}, 'secret')
+    JWT.encode({user_id: self.id}, ENV["NUTRI"])
   end
 end
