@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::API
+
+  before_action :set_current_user
+
   def get_token
     request.headers["Authorization"] || request.headers["Authorisation"]
   end

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if user && user.authenticate(user_params[:password])
       render json: user
     else
-      render json: {failure: "Something went wrong..."}
+      render json: {message: "We couldn't find a user with that email and password!"}, status: :not_acceptable
     end
   end
 
