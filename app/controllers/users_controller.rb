@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, except: [:login, :create]
-
   def create
     user = User.create(user_params)
 
     if user.valid?
-      render json: {jwt: user.token, user: UserSerializer.new(user)}
+      render json: user
     else
       render json: {errors: user.errors.full_messages}, status: :not_acceptable
     end 
@@ -18,12 +16,18 @@ class UsersController < ApplicationController
     user = User.find_by(email: user_params[:email])
 
     if user && user.authenticate(user_params[:password])
-      render json: {jwt: user.token, user: UserSerializer.new(user)}
-      @current_user = user
+      render json: user
     else
       render json: {failure: "Something went wrong..."}
-      @current_user = nil
     end
+  end
+
+  def validate
+    if logged_in?
+      render json: @current_user
+    else
+      render json: {message: "You done somethin wrong boy!"}, status: :not_acceptable
+    end 
   end
 
   def update
