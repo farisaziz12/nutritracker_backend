@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :meals
+  resources :meal_plans
   get 'foods/index'
   get 'foods/show'
   get '/search' => 'foods#search'
