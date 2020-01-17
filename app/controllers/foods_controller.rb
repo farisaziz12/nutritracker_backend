@@ -10,14 +10,6 @@ class FoodsController < ApplicationController
   def show
   end
 
-  # def search 
-  #   foods = find_food(params[:food])
-  #   unless foods
-  #   flash[:alert] = 'Food not found'
-  #   return render action: :index
-  #   end
-  #   food = foods.first
-  # end
 
 
   def search
@@ -38,23 +30,5 @@ class FoodsController < ApplicationController
     render json: response, except: [:created_at, :updated_at]
   end
 
-  private
-
-  # def request_api(url)
-  #   response = Excon.get(url)
-  #   return nil if response.status != 200
-  #   JSON.parse(response.body)
-  # end
-
-  
-
-  # def find_food(name)
-  #   request_api(
-  #     "https://api.edamam.com/api/food-database/parser?nutrition-type=logging&app_id=07d50733&app_key=80fcb49b500737827a9a23f7049653b9&ingr=#{name}"
-  #   )
-  # end
-
-  # URI.encode(/
-    
 
 end
