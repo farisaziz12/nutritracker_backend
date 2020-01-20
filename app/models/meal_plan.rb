@@ -1,4 +1,7 @@
 class MealPlan < ApplicationRecord
   belongs_to :user
-  has_many :meals
+
+  def meals
+    Meal.where(meal_plan_id: self.id)
+  end
 end

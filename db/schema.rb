@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_01_17_105825) do
 
   create_table "meals", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
     t.text "instructions"
     t.string "img_url"
     t.integer "meal_plan_id"
