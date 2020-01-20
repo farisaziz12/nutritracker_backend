@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if logged_in?
       render json: @current_user
     else
-      render json: {message: "You done somethin wrong boy!"}, status: :not_acceptable
+      render json: {message: "You done somethin wrong boy!"}, status: :unauthorized
     end 
   end
 

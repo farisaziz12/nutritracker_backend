@@ -30,13 +30,6 @@ ActiveRecord::Schema.define(version: 2020_01_17_105825) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "meal_plan_joins", force: :cascade do |t|
-    t.integer "meal_id"
-    t.integer "meal_plan_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "meal_plans", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
@@ -49,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_01_17_105825) do
     t.integer "user_id"
     t.text "instructions"
     t.string "img_url"
+    t.integer "meal_plan_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
