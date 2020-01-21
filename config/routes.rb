@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :meals
+  resources :meals, only: [:create]
   resources :meal_plans, only: [:index, :create]
   get 'foods/index'
   get 'foods/show'
