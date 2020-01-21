@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :meals, only: [:create]
-  resources :meal_plans, only: [:index, :create]
+  resources :meal_plans, only: [:index, :create, :destroy]
   get 'foods/index'
   get 'foods/show'
   get '/search' => 'foods#search'

@@ -3,7 +3,8 @@ class MealsController < ApplicationController
     meal = Meal.create(name: params[:meal][:name], meal_plan_id: params[:meal][:meal_plan_id])
 
     params[:meal][:foods].each do |f|
-      food = Food.create(name: f[:name], calories: f[:calories], category: "whatever")
+      name = f[:name].downcase()
+      food = Food.find_by(name: name) || Food.create(name: name, calories: f[:calories], category: "whatever")
       MealFood.create(meal: meal, food: food, quantity: f[:quantity])
     end
 
