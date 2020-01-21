@@ -2,16 +2,6 @@ class FoodsController < ApplicationController
   require 'net/http'
   require 'json'
 
-
-  def index
-    
-  end
-
-  def show
-  end
-
-
-
   def search
     food = params[:food]
     unless food
@@ -22,7 +12,7 @@ class FoodsController < ApplicationController
     request_uri = URI(request_uri)
     api_response = Net::HTTP.get(request_uri)
     food_obj = JSON.parse(api_response)
-    if food_obj["parsed"].empty?
+    if food_obj && food_obj["parsed"].empty?
       response = {error: "food not found"}
     else
       response =  food_obj["parsed"][0]["food"]["nutrients"]

@@ -15,6 +15,11 @@ class MealPlansController < ApplicationController
 
   end
 
+  def destroy
+    meal = MealPlan.find(params[:id]) 
+    render json: meal.destroy
+  end
+
   private
 
   def meal_plan_params
