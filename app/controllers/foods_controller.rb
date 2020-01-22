@@ -12,10 +12,20 @@ class FoodsController < ApplicationController
     request_uri = URI(request_uri)
     api_response = Net::HTTP.get(request_uri)
     food_obj = JSON.parse(api_response)
+
+    image = nil;
+
+    food_obj["hints"].each do |e|
+      if e["food"]["image"] && e["food"]["image"][-3..-1] == "jpg"
+        image = e["food"]["image"]
+        break
+      end
+    end
+
     if food_obj && food_obj["parsed"].empty?
       response = {error: "food not found"}
     else
-      response =  food_obj["parsed"][0]["food"]["nutrients"]
+      response =  food_obj["parsed"][0]["food"]["nutrients"].merge(image: image)
     end
     render json: response, except: [:created_at, :updated_at]
   end
