@@ -31,7 +31,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    
+     @current_user.update(user_params)
+     render json: @current_user
   end
   
   def destroy
