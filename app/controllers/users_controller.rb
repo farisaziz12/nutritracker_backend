@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if user.valid?
       render json: user
     else
-      render json: {errors: user.errors.full_messages}, status: :not_acceptable
+      render json: {message: user.errors.full_messages[0]}, status: :not_acceptable
     end 
 
   end
