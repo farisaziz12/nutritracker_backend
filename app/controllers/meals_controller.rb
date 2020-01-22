@@ -6,6 +6,7 @@ class MealsController < ApplicationController
       name = f[:name].downcase()
       food = Food.find_by(name: f[:name]) || Food.create(name: name,
                                                          fat: f[:fat], 
+                                                         image: f[:image],
                                                          protein: f[:protein], 
                                                          carbohydrate: f[:carbohydrate], 
                                                          calories: f[:calories], 
