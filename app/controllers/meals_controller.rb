@@ -17,4 +17,9 @@ class MealsController < ApplicationController
     render json: meal, scope: {meal_id: meal.id}
   end
 
+  def destroy
+    meal = Meal.find(params[:id])
+    render json: meal.destroy
+  end
+
 end
