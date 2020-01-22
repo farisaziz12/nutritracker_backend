@@ -13,6 +13,7 @@ class FoodsController < ApplicationController
     api_response = Net::HTTP.get(request_uri)
     food_obj = JSON.parse(api_response)
 
+    return response = {error: "food not found"} if !food_obj 
     image = nil;
 
     food_obj["hints"].each do |e|
